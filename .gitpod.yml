@@ -12,6 +12,8 @@ tasks:
       PIPX_HOME=/workspace/ PIPX_BIN_DIR=$PIPX_HOME pipx install algokit &&
       gp sync-done algokit-install &&
       exit
+  - name: set env
+    command: eval $(gp env -e $PATH=$PATH:/workspace) && exit
 vscode:
   extensions:
     - ms-python.python
