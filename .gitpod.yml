@@ -1,4 +1,6 @@
 tasks:
+  - name: update PATH
+    before: printf 'export PATH="%s:$PATH"\n' "/workspace" >> $HOME/.bashrc && exit
   - name: localnet start
     command: >
       gp sync-await algokit-install && 
@@ -9,10 +11,6 @@ tasks:
       pip install pipx && 
       PIPX_HOME=/workspace/ PIPX_BIN_DIR=$PIPX_HOME pipx install algokit &&
       gp sync-done algokit-install &&
-      exit
-  - name: update PATH
-    command: >
-      PATH=$PATH:/workspace &&
       exit
 vscode:
   extensions:
